@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from 'react';
-
-import styles from './Toasty.module.css';
+import { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
+import styles from "./Toasty.module.css";
 
 function Toasty() {
   const [isShown, setIsShown] = useState(false);
@@ -15,23 +15,20 @@ function Toasty() {
     });
 
     if (wrapperRef.current) {
-        observer.observe(wrapperRef.current);
+      observer.observe(wrapperRef.current);
     }
   }, []);
 
-  const translateX = isShown ? '0%' : '100%';
-
   return (
     <div ref={wrapperRef} className={styles.wrapper}>
-      <div
+      <motion.div
         className={styles.character}
-        style={{
-          transition: 'transform 200ms',
-          transform: `translateX(${translateX})`,
-        }}
+        initial={false}
+        transition={{ type: "spring", stiffness: 200, damping: 20 }}
+        animate={{ x: isShown ? "0%" : "100%" }}
       >
         👻
-      </div>
+      </motion.div>
     </div>
   );
 }
