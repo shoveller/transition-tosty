@@ -3,7 +3,7 @@ import Toasty from './Toasty'
 function App() {
   return (
     <main>
-      <article>
+      <article style={{ paddingTop: 2000 }}>
         <h1>On the origins of Lorem Ipsum</h1>
         <p>
           Lorem Ipsum is simply dummy text of the printing and typesetting
